@@ -1,4 +1,4 @@
-package com.supercluster.cosmos.repository;
+package com.supercluster.cosmos.datasource;
 
 import java.net.UnknownHostException;
 
@@ -18,9 +18,8 @@ public class RiakDataSource {
 	public RiakClient getReactClient()
 	{
 		try {
-			return RiakClient.newClient(riakPort, riakHost); //8087, "127.0.0.1"
+			return RiakClient.newClient(riakPort, riakHost);
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

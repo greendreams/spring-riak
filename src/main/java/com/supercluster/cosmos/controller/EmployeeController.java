@@ -24,7 +24,7 @@ public class EmployeeController {
 			RiakClient client = RiakClient.newClient(8087, "127.0.0.1");
 
 			Location location = new Location(new Namespace("TestBucket"), "TestKey");
-			String myData = "This is my data";
+			String myData = "This is my test data";
 
 			StoreValue sv = new StoreValue.Builder(myData).withLocation(location).build();
 			StoreValue.Response svResponse = client.execute(sv);
@@ -34,13 +34,10 @@ public class EmployeeController {
 			System.out.println("Complete");
 			
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -55,22 +52,17 @@ public class EmployeeController {
 			FetchValue fv = new FetchValue.Builder(location).build();
 			FetchValue.Response response = client.execute(fv);
 
-			// Fetch object as String
 			String value = response.getValue(String.class);
 			System.out.println("Value is :" + value);
 
 			client.shutdown();
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (UnresolvedConflictException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
